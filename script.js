@@ -65,7 +65,19 @@ function iniciarJogo(){
   if(direction == 'up') snakeY -= box;
   if(direction == 'down') snakeY += box;
 
-  snake.pop();
+  
+//caso a pos snakeX seja != da foodX 
+//e pos snakeY seja != de foodY 
+//vai retirar ultimo elemento da nossa cobrinha
+//caso não
+//ela vai continuar aumentando e passar função random da foof 
+  if(snakeX != food.x || snakeY != food.y){
+    snake.pop();
+  }
+  else{
+    food.x = Math.floor(Math.random() * 15 + 1) * box;
+    food.y = Math.floor(Math.random() * 15 + 1) * box;
+  }
 
   let newhead = {
     x: snakeX,
